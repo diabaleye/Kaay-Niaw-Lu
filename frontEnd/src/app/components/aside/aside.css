@@ -1,0 +1,121 @@
+.sidebar {
+  width: 340px;
+  height: calc(100vh - 40px);
+  max-height: 1050px;
+  border-radius: 50px;
+  padding: 10px;
+  background-image: linear-gradient(135deg, #F3D37F, #D4AF37);
+  position: fixed;
+  left: 0;
+  top: 20px;
+  box-sizing: border-box;
+  display: flex;
+}
+
+.sidebar-inner {
+  background: #ffffff;
+  border-radius: 42px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 14px 24px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+
+.logo img {
+  width: 130px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.separateur {
+  width: 90%;
+  height: 6px;
+  background: #D4AF37;
+  border-radius: 10px;
+  margin: 16px auto 16px;
+}
+
+nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  width: 100%;
+  justify-content: center;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 18px;
+  width: 100%;
+  height: 44px;
+  border-radius: 25px;
+  border: 1.5px solid #D4AF37;
+  text-decoration: none;
+  color: #1a1a1a;
+  font-family: 'Inria Serif', serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0;
+  box-sizing: border-box;
+  transition: all 0.2s ease;
+}
+
+nav a i {
+  width: 18px;
+  text-align: center;
+  color: #1a1a1a;
+  font-size: 15px;
+}
+
+nav a:hover {
+  background: #fdf6e3;
+}
+
+nav a.active {
+  background: linear-gradient(135deg, #F3D37F, #D4AF37);
+  border-color: #D4AF37;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+nav a.active i {
+  color: #1a1a1a;
+}
+
+.deconnexion {
+  margin-top: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+.deconnexion a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 213px;
+  height: 27.6px;
+  border: 1px solid #fdf6e3;
+  border-radius: 20px;
+  color: #D1A54A;
+  text-decoration: none;
+  font-family: 'Inria Serif', serif;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 100%;
+  letter-spacing: 0;
+  box-sizing: border-box;
+}

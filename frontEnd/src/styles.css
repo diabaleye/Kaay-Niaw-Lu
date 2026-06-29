@@ -1,1 +1,7 @@
-/* You can add global styles to this file, and also import other style files */
+@import '@fortawesome/fontawesome-free/css/all.min.css';
+
+:root {
+  --gold-light: #F3D37F;
+  --gold-dark: #D4AF37;
+  --gold-gradient: linear-gradient(135deg, #F3D37F, #D4AF37);
+}

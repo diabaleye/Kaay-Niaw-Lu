@@ -1,0 +1,94 @@
+.page-content {
+  margin-left: 370px;
+  padding: 24px 30px;
+  min-height: 100vh;
+}
+
+.calendrier-container {
+  background: #fff;
+  border: 1.5px solid #D4AF37;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.mois-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.mois-header h2 {
+  font-family: 'Inria Serif', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+.mois-header button {
+  background: none;
+  border: 1.5px solid #D4AF37;
+  color: #D4AF37;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.mois-header button:hover {
+  background: #D4AF37;
+  color: white;
+}
+
+.mois-header button:active {
+  transform: scale(0.92);
+}
+
+.jours-semaine {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-weight: 600;
+  color: #D4AF37;
+  margin-bottom: 8px;
+  font-size: 13px;
+}
+
+.jours {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.jour {
+  text-align: center;
+  padding: 14px 4px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  position: relative;
+  min-height: 40px;
+}
+
+.jour:not(.vide):hover {
+  border-color: #D4AF37;
+  background: #fdf6e3;
+}
+
+.jour.vide {
+  cursor: default;
+}
+
+.jour.livraison {
+  background: linear-gradient(135deg, #F3D37F, #D4AF37);
+  color: white;
+  font-weight: 600;
+}
+
+.badge {
+  display: block;
+  font-size: 11px;
+}

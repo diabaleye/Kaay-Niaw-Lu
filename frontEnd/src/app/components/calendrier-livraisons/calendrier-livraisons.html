@@ -1,0 +1,27 @@
+<div class="page-content">
+  <app-header titre="CALENDRIER DES LIVRAISONS"></app-header>
+
+  <div class="calendrier-container">
+    <div class="mois-header">
+      <button (click)="moisPrecedent()">◀</button>
+      <h2>{{ nomsMois[moisActuel] }} {{ anneeActuel }}</h2>
+      <button (click)="moisSuivant()">▶</button>
+    </div>
+
+    <div class="jours-semaine">
+      <span>Lun</span><span>Mar</span><span>Mer</span>
+      <span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+    </div>
+
+   <div class="jours">
+  @for (jour of jours; track $index + '-' + jour) {
+    <div class="jour" [class.vide]="jour === null" [class.livraison]="estLivraison(jour)">
+      @if (jour !== null) {
+        {{ jour }}
+        @if (estLivraison(jour)) {
+          <span class="badge">📦</span>
+        }
+      }
+    </div>
+  }
+</div>
