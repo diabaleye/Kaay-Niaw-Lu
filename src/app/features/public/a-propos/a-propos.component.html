@@ -1,0 +1,36 @@
+<nav class="navbar">
+  <div class="logo-wrap"><img src="assets/logo-knl.png" alt="Kaaÿ ñiaw lú" class="logo-img"/></div>
+  <div class="nav-links">
+    <a routerLink="/" class="nav-pill">ACCUEIL</a>
+    <a routerLink="/a-propos" class="nav-pill active">A PROPOS</a>
+    <a routerLink="/contact" class="nav-pill">CONTACT</a>
+  </div>
+  <a routerLink="/connexion" class="btn-connecter">Se connecter</a>
+</nav>
+<section class="content">
+  <div class="text-block">
+    <h1 class="title">A propos</h1>
+    <p class="desc">« Kaaÿ ñiaw lú » est une plateforme innovante conçue pour moderniser la couture sur mesure sénégalaise, en connectant efficacement les clients et les maîtres tailleurs artisans pour un suivi transparent et sans retard.</p>
+  </div>
+  <div class="img-block">
+    <div class="img-ph">🤝 About US</div>
+  </div>
+</section>
+<footer class="footer">© 2026 Kaaÿ ñiaw lú par NiawlouTech. Tous droits réservés.</footer>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border:2px solid #C9A84C;border-radius:16px;margin:12px;}
+  .logo-wrap{background:#000;border-radius:12px;padding:6px;display:flex;align-items:center;justify-content:center;}
+  .logo-img{height:60px;width:auto;display:block;}
+  .nav-links{display:flex;gap:12px;}
+  .nav-pill{background:#000;color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;font-size:0.85rem;font-weight:700;}
+  .nav-pill.active{background:#C9A84C;color:#000;}
+  .btn-connecter{background:#C9A84C;color:#000;padding:12px 24px;border-radius:30px;text-decoration:none;font-weight:700;}
+  .content{display:flex;align-items:center;gap:40px;padding:60px 44px;}
+  .text-block{flex:1;}
+  .title{color:#C9A84C;font-size:2.5rem;font-weight:700;margin-bottom:24px;}
+  .desc{font-size:1.05rem;line-height:1.7;color:#333;}
+  .img-block{flex:1;display:flex;justify-content:center;}
+  .img-ph{width:320px;height:280px;border:2px solid #C9A84C;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#C9A84C;background:#faf8f2;}
+  .footer{text-align:center;padding:20px;color:#444;font-size:0.88rem;}
+</style>

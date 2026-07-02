@@ -1,0 +1,74 @@
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">TABLEAU DE BORD</h1>
+    <div class="header-icons">🔔 👤</div>
+  </div>
+  <hr class="sep"/>
+  @if (chargement()) { <div class="loading">Chargement...</div> }
+  @else {
+    <h2 class="bienvenue">BIENVENUE <span class="gold">{{ data()?.bienvenue | uppercase }} !</span></h2>
+    <h3 class="section-title">Indicateurs Clés de Performance</h3>
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="kpi-label">Commandes en Cours</div><div class="kpi-value">{{ data()?.kpis?.commandes_en_cours ?? 0 }}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Livrées cette Semaine</div><div class="kpi-value">{{ data()?.kpis?.livrees_cette_semaine ?? 0 }}</div></div>
+      <div class="kpi-card"><div class="kpi-label">Chiffre d'affaires</div><div class="kpi-value">{{ (data()?.kpis?.chiffre_affaires ?? 0) | number }} F</div></div>
+    </div>
+
+    <div class="bottom-grid">
+      <!-- Fil des tâches -->
+      <div class="card">
+        <h3 class="gold">Fil des Tâches</h3>
+        <p class="sub">Confections prioritaires</p>
+        @if (data()?.fil_des_taches) {
+          <div class="tache">
+            <div>Nom Client: <span class="gold">{{ data()?.fil_des_taches?.client_nom }}</span></div>
+            <div>Type de tissu: <span class="gold">{{ data()?.fil_des_taches?.tissu }}</span></div>
+            <div>Progression: <span class="gold">{{ data()?.fil_des_taches?.progression }}%</span></div>
+          </div>
+          <a routerLink="/tailleur/commandes-recues" class="btn-cmd">Afficher Commande</a>
+        } @else {
+          <p style="color:#999;margin-top:12px;">Aucune commande en cours.</p>
+        }
+      </div>
+      <!-- Capacité dynamique -->
+      <div class="card" style="text-align:center;">
+        <h3 class="gold">Capacité Dynamique</h3>
+        <div class="pie-container">
+          <svg viewBox="0 0 100 100" width="120" height="120">
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#e5e5e5" stroke-width="20"/>
+            <circle cx="50" cy="50" r="40" fill="none" stroke="#C9A84C" stroke-width="20"
+              [attr.stroke-dasharray]="((data()?.capacite?.pourcentage ?? 0) * 2.51) + ' 251'"
+              stroke-dashoffset="0" transform="rotate(-90 50 50)"/>
+          </svg>
+          <div class="pie-label">{{ data()?.capacite?.pourcentage ?? 0 }}%</div>
+        </div>
+        @if (data()?.capacite?.alerte) {
+          <div class="alerte">⚠ Seuil de commandes presque atteint</div>
+        }
+      </div>
+    </div>
+  }
+</div>
+<style>
+  .page { padding:24px 32px; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; }
+  .page-title { font-size:1.6rem; font-weight:700; }
+  .sep { border-color:#C9A84C; margin:12px 0 24px; }
+  .header-icons { font-size:1.3rem; display:flex; gap:16px; }
+  .bienvenue { font-size:1.8rem; font-weight:700; margin-bottom:20px; }
+  .gold { color:#C9A84C; }
+  .section-title { color:#C9A84C; font-size:1.1rem; margin-bottom:12px; }
+  .kpi-grid { display:flex; gap:16px; margin-bottom:24px; flex-wrap:wrap; }
+  .kpi-card { border:2px solid #C9A84C; border-radius:12px; padding:16px 28px; text-align:center; min-width:150px; }
+  .kpi-label { font-weight:700; font-size:0.9rem; margin-bottom:8px; }
+  .kpi-value { color:#C9A84C; font-size:1.8rem; font-weight:700; }
+  .bottom-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .card { border:1.5px solid #C9A84C; border-radius:12px; padding:20px; }
+  .sub { color:#999; font-size:0.85rem; margin-bottom:12px; }
+  .tache { display:flex; flex-direction:column; gap:6px; font-size:0.9rem; margin-bottom:16px; }
+  .btn-cmd { display:inline-block; padding:8px 20px; border:1.5px solid #333; border-radius:20px; text-decoration:none; color:#333; font-size:0.85rem; }
+  .pie-container { position:relative; display:inline-block; margin:16px 0; }
+  .pie-label { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); font-size:1.1rem; font-weight:700; color:#C9A84C; }
+  .alerte { color:#C9A84C; font-size:0.85rem; margin-top:8px; }
+  .loading { color:#999; padding:40px; text-align:center; }
+</style>

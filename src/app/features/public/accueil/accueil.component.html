@@ -1,0 +1,115 @@
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="card navbar">
+    <div class="logo-wrap">
+      <img src="assets/logo-knl.png" alt="Kaaÿ ñiaw lú" class="logo-img"/>
+    </div>
+    <nav class="nav-links">
+      <a routerLink="/"        class="nav-pill">ACCUEIL</a>
+      <a routerLink="/a-propos" class="nav-pill">A PROPOS</a>
+      <a routerLink="/contact"  class="nav-pill">CONTACT</a>
+    </nav>
+    <a routerLink="/connexion" class="btn-connecter">Se connecter</a>
+  </header>
+
+  <!-- HERO -->
+  <section class="card hero">
+    <div class="hero-text">
+      <h1 class="hero-title">LA COUTURE<br/>SENEGALAISE, SUR<br/>MESURE, EN UN CLIC.</h1>
+      <p class="hero-sub"><strong>Découvrez nos tailleurs artisans.<br/>Commandez des tenues uniques.</strong></p>
+      <a routerLink="/connexion" class="btn-cta">Trouver un artisan &rsaquo;</a>
+    </div>
+    <div class="hero-img">
+      <img src="assets/hero-couple.png" alt="Couple en tenue sénégalaise"/>
+    </div>
+  </section>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <section class="card how">
+    <h2 class="how-title">Comment ça marche?</h2>
+    <div class="how-steps">
+      <div class="step">
+        <img src="assets/icon-recherche.png" alt="Rechercher un tailleur" class="step-img"/>
+        <p><span class="step-num">1.</span> Rechercher un tailleur</p>
+      </div>
+      <div class="step">
+        <img src="assets/icon-mesures.png" alt="Enregistrer vos mesures" class="step-img"/>
+        <p><span class="step-num">2.</span> Enregistrer vos mesures</p>
+      </div>
+      <div class="step">
+        <img src="assets/icon-livraison.png" alt="Confirmation et livraison" class="step-img"/>
+        <p><span class="step-num">3.</span> Confirmation et livraison</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CARTES ARTISANS -->
+  <section class="artisans-grid">
+    @for (a of artisans; track a.atelier) {
+      <div class="carte-artisan">
+        <div class="carte-header">
+          <div class="photo-ph">PHOTO</div>
+          <div>
+            <div class="carte-label">CARTE ARTISAN</div>
+            <div class="etoiles">
+              @for (e of etoiles(a.note); track $index) {
+                <span [class.plein]="e">★</span>
+              }
+            </div>
+            <div class="atelier-nom"><strong>{{ a.atelier }}</strong></div>
+          </div>
+        </div>
+        <div class="carte-infos">
+          <div><strong>Prénom &amp; Nom:</strong> {{ a.nom }}</div>
+          <div><strong>Adresse:</strong> {{ a.adresse }}</div>
+          <div><strong>Téléphone:</strong> {{ a.telephone }}</div>
+        </div>
+        <a routerLink="/connexion" class="btn-commander">Commander</a>
+      </div>
+    }
+  </section>
+
+  <footer class="footer">© 2026 Kaaÿ ñiaw lú par NiawlouTech. Tous droits réservés.</footer>
+</div>
+
+<style>
+  *{box-sizing:border-box;} .page{font-family:sans-serif;padding:12px;display:flex;flex-direction:column;gap:0;}
+  .card{border:2px solid #C9A84C;border-radius:20px;margin-bottom:16px;background:#fff;}
+  /* Navbar */
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;}
+  .logo-wrap{background:#000;border-radius:12px;padding:6px;display:flex;align-items:center;justify-content:center;}
+  .logo-img{height:60px;width:auto;display:block;}
+  .nav-links{display:flex;gap:12px;}
+  .nav-pill{background:#000;color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;font-size:0.85rem;font-weight:700;}
+  .btn-connecter{background:#C9A84C;color:#000;padding:12px 24px;border-radius:30px;text-decoration:none;font-weight:700;font-size:0.95rem;}
+  /* Hero */
+  .hero{display:flex;align-items:center;gap:36px;padding:36px 40px;}
+  .hero-text{flex:1;}
+  .hero-title{color:#C9A84C;font-size:2.4rem;font-weight:900;line-height:1.18;margin:0 0 18px;}
+  .hero-sub{font-size:1.1rem;color:#1a1a1a;line-height:1.6;margin:0 0 28px;}
+  .btn-cta{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(180deg,#E0BF6E,#C9A84C);color:#000;padding:18px 36px;border-radius:30px;text-decoration:none;font-size:1.2rem;font-weight:800;}
+  .hero-img{flex:1;}
+  .hero-img img{width:100%;max-height:400px;object-fit:cover;border-radius:12px;display:block;}
+  /* How */
+  .how{padding:32px 40px;text-align:center;}
+  .how-title{color:#C9A84C;font-size:1.8rem;font-weight:800;margin:0 0 28px;}
+  .how-steps{display:flex;justify-content:space-around;gap:24px;flex-wrap:wrap;}
+  .step{display:flex;flex-direction:column;align-items:center;gap:12px;max-width:220px;}
+  .step-img{width:120px;height:auto;}
+  .step p{font-size:1rem;color:#1a1a1a;}
+  .step-num{color:#C9A84C;font-weight:800;}
+  /* Cartes */
+  .artisans-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-bottom:16px;}
+  .carte-artisan{background:#d9d9d9;border:2px solid #C9A84C;border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:12px;}
+  .carte-header{display:flex;gap:14px;align-items:flex-start;}
+  .photo-ph{width:70px;height:70px;background:#bbb;border:1.5px solid #C9A84C;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#555;flex-shrink:0;}
+  .carte-label{color:#C9A84C;font-weight:800;font-size:0.82rem;}
+  .etoiles{color:#ddd;font-size:1rem;margin:2px 0;}
+  .etoiles span.plein{color:#C9A84C;}
+  .atelier-nom{font-size:1rem;margin-top:2px;}
+  .carte-infos{display:flex;flex-direction:column;gap:4px;font-size:0.85rem;color:#222;}
+  .btn-commander{align-self:flex-start;background:#fff;border:1.5px solid #C9A84C;padding:8px 24px;border-radius:30px;text-decoration:none;color:#000;font-weight:700;font-size:0.88rem;}
+  .footer{text-align:center;padding:18px;color:#444;font-size:0.88rem;}
+  @media(max-width:700px){.hero{flex-direction:column;}.navbar{flex-direction:column;gap:12px;}.nav-links{flex-wrap:wrap;justify-content:center;}}
+</style>

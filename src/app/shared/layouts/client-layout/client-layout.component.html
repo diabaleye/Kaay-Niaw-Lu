@@ -1,0 +1,30 @@
+<div class="app-shell">
+  <aside class="sidebar">
+    <div class="logo-wrap">
+      <img src="assets/logo-knl.png" alt="Kaaÿ ñiaw lú" class="logo-img"/>
+    </div>
+    <hr class="divider"/>
+    <nav class="nav">
+      <a routerLink="/client/tableau-de-bord"     routerLinkActive="nav-active" class="nav-item">⊞ Tableau de bord</a>
+      <a routerLink="/client/carnet-de-mesures"    routerLinkActive="nav-active" class="nav-item">📐 Carnet de mesures</a>
+      <a routerLink="/client/historique-commandes" routerLinkActive="nav-active" class="nav-item">📋 Historique des commandes</a>
+      <a routerLink="/client/messagerie"           routerLinkActive="nav-active" class="nav-item">💬 Ma messagerie</a>
+      <a routerLink="/client/parametres"           routerLinkActive="nav-active" class="nav-item">⚙ Paramètres</a>
+    </nav>
+    <button class="deconnexion" (click)="auth.deconnecter()">↪ Se déconnecter</button>
+  </aside>
+  <main class="main-content"><router-outlet /></main>
+</div>
+<style>
+  .app-shell{display:flex;min-height:100vh;font-family:sans-serif;}
+  .sidebar{width:280px;min-height:100vh;border:2px solid #C9A84C;border-radius:16px;margin:12px;padding:16px;display:flex;flex-direction:column;gap:8px;position:sticky;top:12px;align-self:flex-start;max-height:calc(100vh - 24px);overflow-y:auto;flex-shrink:0;}
+  .logo-wrap{background:#000;border-radius:12px;padding:8px;display:flex;align-items:center;justify-content:center;}
+  .logo-img{width:100%;max-width:200px;height:auto;display:block;}
+  .divider{border-color:#C9A84C;margin:8px 0;}
+  .nav{display:flex;flex-direction:column;gap:6px;flex:1;}
+  .nav-item{display:flex;align-items:center;gap:10px;padding:12px 16px;border-radius:30px;text-decoration:none;color:#333;font-size:0.9rem;border:1px solid transparent;transition:all 0.2s;}
+  .nav-item:hover{border-color:#C9A84C;}
+  .nav-active{background:#C9A84C !important;color:#000;font-weight:600;border-color:#C9A84C;}
+  .deconnexion{background:none;border:none;color:#C9A84C;cursor:pointer;font-size:0.9rem;padding:8px;text-align:left;margin-top:auto;}
+  .main-content{flex:1;overflow:hidden;}
+</style>

@@ -1,0 +1,164 @@
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">MON ATELIER VIRTUEL</h1>
+    <div class="header-icons">🔔 👤</div>
+  </div>
+  <hr class="sep"/>
+
+  <div class="filtres">
+    @for (c of categories; track c.valeur) {
+      <button class="filtre-btn" [class.actif]="filtreActif() === c.valeur" (click)="charger(c.valeur)">
+        {{ c.label }}
+      </button>
+    }
+  </div>
+
+  <div class="table-container">
+    <h3 class="gold">Mes modèles</h3>
+    <table class="table">
+      <thead>
+        <tr><th>PHOTO</th><th>NOM MODELE / TISSUS</th><th>PRIX</th><th>ACTIONS</th></tr>
+      </thead>
+      <tbody>
+        @if (chargement()) {
+          <tr><td colspan="4" class="vide">Chargement...</td></tr>
+        } @else if (modeles().length === 0) {
+          <tr><td colspan="4" class="vide">Aucun modèle. Cliquez sur "+ Ajouter modèle".</td></tr>
+        } @else {
+          @for (m of modeles(); track m.id) {
+            <tr [style.opacity]="m.actif ? 1 : 0.5">
+              <td>
+                @if (m.photo_url) {
+                  <img [src]="m.photo_url" alt="{{ m.titre }}" class="photo-modele"/>
+                } @else {
+                  <div class="photo-ph"></div>
+                }
+              </td>
+              <td>
+                <div>Modèle: <span class="gold">{{ m.titre }}</span></div>
+                <div>Tissu: <span class="gold">{{ m.tissu ?? '—' }}</span></div>
+              </td>
+              <td class="prix gold">{{ formatPrix(m.prix_base) }}</td>
+              <td class="actions">
+                <button class="icon-btn" title="Modifier"         (click)="ouvrir(m)">✏️</button>
+                <button class="icon-btn" title="Masquer/Afficher" (click)="toggleVisibilite(m)">{{ m.actif ? '👁️' : '🚫' }}</button>
+                <button class="icon-btn" title="Supprimer"        (click)="supprimer(m)">🗑️</button>
+              </td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn-ajouter" (click)="ouvrir()">+ Ajouter modèle</button>
+</div>
+
+<!-- Modal -->
+@if (afficherModal()) {
+  <div class="modal-overlay" (click)="fermer()">
+    <div class="modal" (click)="$event.stopPropagation()">
+      <h2 class="gold">{{ modeleEnEdition() ? 'Modifier le modèle' : 'Ajouter un modèle' }}</h2>
+
+      @if (erreurModal()) {
+        <div class="alert-erreur">{{ erreurModal() }}</div>
+      }
+
+      <form [formGroup]="form" (ngSubmit)="sauvegarder()">
+
+        <!-- Zone photo -->
+        <div class="photo-zone">
+          @if (photoPreview()) {
+            <img [src]="photoPreview()!" alt="Aperçu" class="photo-preview"/>
+          } @else {
+            <div class="photo-vide">📷 Aucune photo</div>
+          }
+          <label class="btn-photo">
+            {{ photoPreview() ? 'Changer la photo' : 'Ajouter une photo' }}
+            <input type="file" accept="image/*" (change)="onPhotoChoisie($event)" style="display:none"/>
+          </label>
+          <small style="color:#999;">JPG, PNG, WEBP — max 3 MB</small>
+        </div>
+
+        <div class="champ">
+          <label>Nom du modèle *</label>
+          <input formControlName="titre" class="input-knl" placeholder="Ex: Sabador SAMBA"/>
+          @if (form.get('titre')?.invalid && form.get('titre')?.touched) {
+            <span class="err">Ce champ est obligatoire.</span>
+          }
+        </div>
+
+        <div class="champ">
+          <label>Tissu</label>
+          <input formControlName="tissu" class="input-knl" placeholder="Ex: Bazin Riche"/>
+        </div>
+
+        <div class="champ">
+          <label>Catégorie</label>
+          <select formControlName="categorie" class="input-knl">
+            <option value="autre">Autre</option>
+            <option value="grands_boubous">Grands boubous</option>
+            <option value="kaftans_et_robes">Kaftans et robes</option>
+            <option value="tuniques_modernes">Tuniques modernes</option>
+          </select>
+        </div>
+
+        <div class="champ">
+          <label>Prix (FCFA) *</label>
+          <input formControlName="prix_base" type="number" class="input-knl" placeholder="Ex: 50000"/>
+          @if (form.get('prix_base')?.invalid && form.get('prix_base')?.touched) {
+            <span class="err">Prix obligatoire (minimum 0).</span>
+          }
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-annuler" (click)="fermer()">Annuler</button>
+          <button type="submit" class="btn-sauvegarder" [disabled]="sauvegarde()">
+            {{ sauvegarde() ? 'Enregistrement...' : 'Sauvegarder' }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+}
+
+<style>
+  .page { padding:24px 32px; position:relative; min-height:100vh; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; }
+  .page-title { font-size:1.6rem; font-weight:700; }
+  .sep { border-color:#C9A84C; margin:12px 0 16px; }
+  .header-icons { font-size:1.3rem; display:flex; gap:16px; }
+  .filtres { display:flex; gap:10px; margin-bottom:20px; flex-wrap:wrap; }
+  .filtre-btn { padding:8px 16px; border:1.5px solid #C9A84C; border-radius:20px; background:white; cursor:pointer; font-size:0.85rem; transition:all 0.2s; }
+  .filtre-btn.actif { background:#C9A84C; font-weight:600; }
+  .table-container { border:1.5px solid #C9A84C; border-radius:12px; padding:20px; }
+  .gold { color:#C9A84C; }
+  .table { width:100%; border-collapse:collapse; margin-top:12px; }
+  .table th { border:1.5px solid #C9A84C; padding:10px; text-align:center; font-size:0.85rem; }
+  .table td { border:1.5px solid #C9A84C; padding:12px; vertical-align:middle; }
+  .photo-modele { width:80px; height:60px; object-fit:cover; border-radius:6px; display:block; margin:auto; }
+  .photo-ph { width:80px; height:60px; background:#ddd; border-radius:6px; margin:auto; }
+  .prix { text-align:center; font-size:1.2rem; font-weight:700; }
+  .actions { text-align:center; white-space:nowrap; }
+  .icon-btn { background:none; border:none; font-size:1.2rem; cursor:pointer; margin:0 4px; }
+  .btn-ajouter { position:fixed; bottom:32px; right:32px; padding:14px 24px; background:#C9A84C; color:#000; border:none; border-radius:30px; font-size:1rem; font-weight:700; cursor:pointer; box-shadow:0 4px 12px rgba(0,0,0,0.15); }
+  .vide { text-align:center; color:#999; padding:20px; }
+  /* Modal */
+  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); display:flex; align-items:center; justify-content:center; z-index:1000; }
+  .modal { background:#fff; border-radius:16px; border:2px solid #C9A84C; padding:28px; width:460px; max-height:90vh; overflow-y:auto; }
+  .alert-erreur { background:#fef2f2; border:1px solid #dc2626; color:#dc2626; padding:10px 14px; border-radius:8px; margin-bottom:14px; font-size:0.88rem; }
+  /* Zone photo */
+  .photo-zone { display:flex; flex-direction:column; align-items:center; gap:8px; margin-bottom:20px; padding:16px; border:2px dashed #C9A84C; border-radius:12px; }
+  .photo-preview { width:120px; height:100px; object-fit:cover; border-radius:8px; }
+  .photo-vide { color:#999; font-size:2rem; }
+  .btn-photo { padding:8px 16px; background:#C9A84C; color:#000; border-radius:20px; cursor:pointer; font-size:0.85rem; font-weight:600; }
+  /* Champs */
+  .champ { margin-bottom:14px; }
+  .champ label { display:block; font-size:0.85rem; font-weight:600; margin-bottom:6px; }
+  .input-knl { width:100%; padding:10px 14px; border:1.5px solid #C9A84C; border-radius:30px; outline:none; font-size:0.95rem; box-sizing:border-box; }
+  .err { color:#dc2626; font-size:0.78rem; padding-left:12px; }
+  .modal-actions { display:flex; gap:12px; justify-content:flex-end; margin-top:20px; }
+  .btn-annuler { padding:10px 20px; background:white; border:1.5px solid #333; border-radius:20px; cursor:pointer; }
+  .btn-sauvegarder { padding:10px 20px; background:#C9A84C; color:#000; border:none; border-radius:20px; font-weight:600; cursor:pointer; }
+  .btn-sauvegarder:disabled { opacity:0.6; cursor:not-allowed; }
+</style>

@@ -1,0 +1,55 @@
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">COMMANDES RECUES</h1>
+    <div class="header-icons">🔔 👤</div>
+  </div>
+  <hr class="sep"/>
+  <div class="filtres">
+    @for (f of filtres; track f.valeur) {
+      <button class="filtre-btn" [class.actif]="filtreActif() === f.valeur" (click)="charger(f.valeur)">{{ f.label }}</button>
+    }
+  </div>
+  @if (chargement()) { <div class="loading">Chargement...</div> }
+  @else if (commandes().length === 0) {
+    <div class="empty">Aucune commande {{ filtreActif() ? 'dans cette catégorie' : 'pour le moment' }}.</div>
+  } @else {
+    @for (cmd of commandes(); track cmd.id) {
+      <div class="cmd-card">
+        <div class="cmd-body">
+          <div class="cmd-num">#{{ cmd.numero }}</div>
+          <div class="cmd-info"><span class="label">Nom Client:</span> <strong>{{ cmd.client?.nom }}</strong></div>
+          <div class="cmd-info"><span class="label">Type de tissu:</span> {{ cmd.modele?.tissu ?? '—' }}</div>
+          <div class="cmd-info"><span class="label">Progression Commande:</span> <strong style="font-size:1.4rem;">{{ cmd.progression ?? 0 }}%</strong></div>
+          <div class="cmd-actions">
+            <button class="btn-action">Voir Mesures</button>
+            <button class="btn-action">Chat Direct</button>
+            <button class="btn-avancer" (click)="avancer(cmd)">Avancer →</button>
+          </div>
+        </div>
+        <div class="photo-placeholder"></div>
+      </div>
+    }
+  }
+</div>
+<style>
+  .page { padding:24px 32px; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; }
+  .page-title { font-size:1.6rem; font-weight:700; }
+  .sep { border-color:#C9A84C; margin:12px 0 16px; }
+  .header-icons { font-size:1.3rem; display:flex; gap:16px; }
+  .filtres { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px; }
+  .filtre-btn { padding:8px 16px; border:1.5px solid #C9A84C; border-radius:20px; background:white; cursor:pointer; font-size:0.85rem; }
+  .filtre-btn.actif { background:#C9A84C; color:#000; font-weight:600; }
+  .cmd-card { background:#C9A84C; border-radius:12px; padding:20px; display:flex; justify-content:space-between; gap:16px; margin-bottom:16px; }
+  .cmd-body { flex:1; display:flex; flex-direction:column; gap:6px; }
+  .cmd-num { font-size:1.1rem; font-weight:700; color:#fff; }
+  .label { text-decoration:underline; }
+  .cmd-info { font-size:0.95rem; }
+  .cmd-info strong { color:#fff; }
+  .cmd-actions { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .btn-action { padding:8px 14px; background:#fff; border:1.5px solid #333; border-radius:20px; cursor:pointer; font-size:0.82rem; }
+  .btn-avancer { padding:8px 14px; background:#000; color:#C9A84C; border:none; border-radius:20px; cursor:pointer; font-size:0.82rem; font-weight:600; }
+  .photo-placeholder { width:130px; height:110px; background:#ddd; border-radius:8px; flex-shrink:0; }
+  .empty { color:#999; padding:40px; text-align:center; }
+  .loading { color:#999; padding:40px; text-align:center; }
+</style>

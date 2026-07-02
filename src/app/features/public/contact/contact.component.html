@@ -1,0 +1,50 @@
+<nav class="navbar">
+  <div class="logo-wrap"><img src="assets/logo-knl.png" alt="Kaaÿ ñiaw lú" class="logo-img"/></div>
+  <div class="nav-links">
+    <a routerLink="/" class="nav-pill">ACCUEIL</a>
+    <a routerLink="/a-propos" class="nav-pill">A PROPOS</a>
+    <a routerLink="/contact" class="nav-pill active">CONTACT</a>
+  </div>
+  <a routerLink="/connexion" class="btn-connecter">Se connecter</a>
+</nav>
+<section class="content">
+  <h1 class="title">Contactez-nous</h1>
+  @if(envoye()){
+    <div class="succes">✓ Message envoyé avec succès !</div>
+  } @else {
+    <form class="form" (ngSubmit)="envoyer()">
+      <div class="row-3">
+        <div class="champ"><label>Prénom</label><input class="input" placeholder="Abdoul Fadel"/></div>
+        <div class="champ"><label>Nom</label><input class="input" placeholder="SARR"/></div>
+        <div class="champ"><label>Addresse email</label><input class="input" type="email" placeholder="fadel@yahoo.com"/></div>
+      </div>
+      <div class="champ"><label>Votre message</label>
+        <textarea class="input textarea" placeholder="Enter your question or message"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Soumettre</button>
+    </form>
+  }
+</section>
+<footer class="footer">© 2026 Kaaÿ ñiaw lú par NiawlouTech. Tous droits réservés.</footer>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;font-family:sans-serif;}
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:12px 28px;border:2px solid #C9A84C;border-radius:16px;margin:12px;}
+  .logo-wrap{background:#000;border-radius:12px;padding:6px;display:flex;align-items:center;justify-content:center;}
+  .logo-img{height:60px;width:auto;display:block;}
+  .nav-links{display:flex;gap:12px;}
+  .nav-pill{background:#000;color:#fff;padding:10px 20px;border-radius:30px;text-decoration:none;font-size:0.85rem;font-weight:700;}
+  .nav-pill.active{background:#C9A84C;color:#000;}
+  .btn-connecter{background:#C9A84C;color:#000;padding:12px 24px;border-radius:30px;text-decoration:none;font-weight:700;}
+  .content{padding:40px 44px;max-width:900px;margin:auto;}
+  .title{color:#C9A84C;font-size:2rem;font-weight:700;margin-bottom:28px;}
+  .succes{background:#f0fdf4;border:1px solid #16a34a;color:#16a34a;padding:16px;border-radius:10px;}
+  .form{display:flex;flex-direction:column;gap:20px;}
+  .row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;}
+  .champ{display:flex;flex-direction:column;gap:6px;}
+  .champ label{font-weight:600;font-size:0.85rem;}
+  .input{padding:12px 16px;border:1.5px solid #ccc;border-radius:8px;outline:none;font-size:0.95rem;}
+  .input:focus{border-color:#C9A84C;}
+  .textarea{min-height:180px;resize:vertical;}
+  .btn-submit{padding:14px;background:#C9A84C;color:#000;border:none;border-radius:30px;font-size:1.1rem;font-weight:700;cursor:pointer;}
+  .footer{text-align:center;padding:20px;color:#444;font-size:0.88rem;}
+</style>

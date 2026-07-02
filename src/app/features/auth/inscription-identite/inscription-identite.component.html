@@ -1,0 +1,29 @@
+<div class="auth-page">
+  <div class="logo-wrap"><img src="assets/logo-knl.png" alt="Kaaÿ ñiaw lú" class="logo-img"/></div>
+  <div class="auth-card">
+    <h2 class="question">Vous vous inscrivez en tant que ?</h2>
+    <div class="role-choices">
+      <label class="role-card" [class.selected]="roleChoisi() === 'tailleur'" (click)="choisir('tailleur')">
+        <input type="radio" name="role" value="tailleur" [checked]="roleChoisi() === 'tailleur'" readonly/>
+        <span>TAILLEUR</span>
+      </label>
+      <label class="role-card" [class.selected]="roleChoisi() === 'client'" (click)="choisir('client')">
+        <input type="radio" name="role" value="client" [checked]="roleChoisi() === 'client'" readonly/>
+        <span>CLIENT</span>
+      </label>
+    </div>
+    @if (roleChoisi()) { <button class="btn-primary" (click)="continuer()">Continuer</button> }
+  </div>
+</div>
+<style>
+  .auth-page{min-height:100vh;display:flex;align-items:center;justify-content:center;gap:4rem;background:#fff;padding:2rem;}
+  .logo-wrap{background:#000;border-radius:20px;padding:12px;display:flex;align-items:center;justify-content:center;}
+  .logo-img{width:200px;height:auto;display:block;}
+  .auth-card{border:2px solid #C9A84C;border-radius:16px;padding:3rem;min-width:380px;text-align:center;}
+  .question{color:#C9A84C;font-size:1.4rem;margin-bottom:2rem;}
+  .role-choices{display:flex;justify-content:center;gap:3rem;margin-bottom:2rem;}
+  .role-card{display:flex;align-items:center;gap:10px;font-size:1.1rem;font-weight:700;cursor:pointer;padding:10px 20px;border-radius:8px;border:2px solid transparent;}
+  .role-card.selected{border-color:#C9A84C;background:rgba(201,168,76,0.08);}
+  .role-card input{accent-color:#C9A84C;}
+  .btn-primary{padding:12px 3rem;background:#C9A84C;color:#000;border:none;border-radius:30px;font-size:1rem;font-weight:600;cursor:pointer;}
+</style>

@@ -1,0 +1,56 @@
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">MES COMMANDES</h1>
+    <div class="header-icons">🔔 🛒 👤 <button class="btn-commander">+ Commander</button></div>
+  </div>
+  <hr class="sep"/>
+  @if (chargement()) { <div class="loading">Chargement...</div> }
+  @else if (commandes().length === 0) {
+    <div class="empty">Aucune commande pour le moment. Cliquez sur "+ Commander" pour passer votre première commande.</div>
+  } @else {
+    <div class="commandes-list">
+      @for (cmd of commandes(); track cmd.id) {
+        <div class="cmd-card">
+          <div class="cmd-body">
+            <div class="cmd-num">#{{ cmd.numero }}</div>
+            <div class="cmd-info"><span class="label">Nom Tailleur:</span> <strong>{{ cmd.tailleur?.nom_atelier ?? cmd.tailleur?.nom }}</strong></div>
+            <div class="cmd-info"><span class="label">Type de tissu:</span> {{ cmd.modele?.tissu ?? '—' }}</div>
+            <div class="cmd-info"><span class="label">Deadline:</span> <strong style="font-size:1.3rem;">{{ cmd.deadline ?? '—' }}</strong></div>
+            <div class="cmd-actions">
+              <button class="btn-action">Voir Profil</button>
+              <button class="btn-action">Chat Direct</button>
+            </div>
+          </div>
+          <div class="cmd-photo">
+            <div class="photo-placeholder"></div>
+            <div class="statut" [style.color]="statutCouleur(cmd.statut)">
+              Statut: <strong>{{ statutLabel(cmd.statut) }}</strong>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>
+<style>
+  .page { padding:24px 32px; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; }
+  .page-title { font-size:1.6rem; font-weight:700; }
+  .sep { border-color:#C9A84C; margin:12px 0 20px; }
+  .header-icons { display:flex; align-items:center; gap:16px; font-size:1.2rem; }
+  .btn-commander { padding:8px 16px; border:1.5px solid #333; border-radius:20px; background:white; cursor:pointer; }
+  .commandes-list { display:flex; flex-direction:column; gap:16px; }
+  .cmd-card { background:#C9A84C; border-radius:12px; padding:20px; display:flex; justify-content:space-between; gap:16px; }
+  .cmd-body { flex:1; display:flex; flex-direction:column; gap:6px; }
+  .cmd-num { font-size:1.1rem; font-weight:700; color:#fff; margin-bottom:4px; }
+  .label { text-decoration:underline; }
+  .cmd-info { font-size:0.95rem; }
+  .cmd-info strong { color:#fff; }
+  .cmd-actions { display:flex; gap:10px; margin-top:12px; }
+  .btn-action { padding:8px 16px; background:#fff; border:1.5px solid #333; border-radius:20px; cursor:pointer; font-size:0.85rem; }
+  .cmd-photo { display:flex; flex-direction:column; align-items:flex-end; justify-content:space-between; gap:12px; }
+  .photo-placeholder { width:120px; height:100px; background:#ddd; border-radius:8px; }
+  .statut { font-size:0.9rem; text-align:right; }
+  .empty { color:#999; padding:40px; text-align:center; }
+  .loading { color:#999; padding:40px; text-align:center; }
+</style>

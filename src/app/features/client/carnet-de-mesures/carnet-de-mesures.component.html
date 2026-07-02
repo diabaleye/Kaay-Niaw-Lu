@@ -1,0 +1,64 @@
+<div class="page">
+  <div class="page-header">
+    <h1 class="page-title">CARNET DE MESURES</h1>
+    <div class="header-icons">🔔 🛒 👤 <button class="btn-commander">+ Commander</button></div>
+  </div>
+  <hr class="sep"/>
+  @if (chargement()) { <div class="loading">Chargement...</div> }
+  @else {
+    <div class="mesures-header">
+      <div>
+        <h2 class="gold">Mesures de {{ nom() | uppercase }}</h2>
+        @if (majLe()) { <p class="sub">Dernière mise à jour: {{ majLe() }}</p> }
+      </div>
+      <button class="btn-enregistrer" (click)="enregistrer()" [disabled]="sauvegarde()">
+        {{ sauvegarde() ? 'Enregistrement...' : 'Enregistrer les modifications' }}
+      </button>
+    </div>
+    @if (succes()) { <div class="alert-succes">✓ Mesures enregistrées avec succès.</div> }
+
+    <form [formGroup]="form">
+      <div class="section">
+        <div class="section-title">HAUT DU CORPS</div>
+        <div class="mesure-row" *ngFor="let m of hautsCorps">
+          <div class="mesure-label">{{ m.label }}</div>
+          <div class="arrow">➜</div>
+          <input type="number" [formControlName]="m.key" class="mesure-input" placeholder="—"/>
+          <div class="unite">CM</div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">BAS DU CORPS</div>
+        <div class="mesure-row" *ngFor="let m of basCorps">
+          <div class="mesure-label">{{ m.label }}</div>
+          <div class="arrow">➜</div>
+          <input type="number" [formControlName]="m.key" class="mesure-input" placeholder="—"/>
+          <div class="unite">CM</div>
+        </div>
+      </div>
+    </form>
+  }
+</div>
+
+<style>
+  .page { padding:24px 32px; }
+  .page-header { display:flex; justify-content:space-between; align-items:center; }
+  .page-title { font-size:1.6rem; font-weight:700; }
+  .sep { border-color:#C9A84C; margin:12px 0 20px; }
+  .header-icons { display:flex; align-items:center; gap:16px; font-size:1.2rem; }
+  .btn-commander { padding:8px 16px; border:1.5px solid #333; border-radius:20px; background:white; cursor:pointer; }
+  .mesures-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:20px; }
+  .gold { color:#C9A84C; font-size:1.4rem; font-weight:700; }
+  .sub { color:#999; font-size:0.85rem; margin-top:4px; }
+  .btn-enregistrer { background:#000; color:#C9A84C; border:none; border-radius:8px; padding:12px 20px; cursor:pointer; font-size:0.9rem; }
+  .btn-enregistrer:disabled { opacity:0.6; }
+  .alert-succes { background:#f0fdf4; border:1px solid #16a34a; color:#16a34a; padding:10px 16px; border-radius:8px; margin-bottom:16px; }
+  .section { border:1.5px solid #C9A84C; border-radius:12px; padding:16px 20px; margin-bottom:16px; }
+  .section-title { font-weight:700; font-size:0.9rem; color:#555; margin-bottom:12px; letter-spacing:1px; }
+  .mesure-row { display:grid; grid-template-columns:200px 40px 120px 60px; align-items:center; margin-bottom:10px; }
+  .mesure-label { border:1.5px solid #C9A84C; border-radius:30px; padding:10px 16px; font-weight:700; font-size:0.95rem; text-align:center; }
+  .arrow { color:#C9A84C; font-size:1.4rem; text-align:center; }
+  .mesure-input { border:1.5px solid #C9A84C; border-radius:30px; padding:10px 16px; font-size:1.1rem; font-weight:700; text-align:center; outline:none; width:100%; box-sizing:border-box; }
+  .unite { color:#555; font-size:0.9rem; padding-left:8px; }
+  .loading { color:#999; padding:40px; text-align:center; }
+</style>

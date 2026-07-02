@@ -1,0 +1,4 @@
+import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
+@Component({ selector: 'app-a-propos', standalone: true, imports: [RouterLink], templateUrl: './a-propos.component.html' })
+export class AProposComponent {}
