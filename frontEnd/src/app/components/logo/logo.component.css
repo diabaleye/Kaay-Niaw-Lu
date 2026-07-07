@@ -1,0 +1,68 @@
+.logo-card {
+  background: var(--black);
+  border: 2px solid var(--gold);
+  border-radius: var(--border-radius);
+  padding: 24px 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.logo-monogram {
+  font-size: 48px;
+  font-weight: 700;
+  background: var(--gold-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.logo-text {
+  color: var(--gold);
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+
+.logo-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.logo-divider .dot {
+  width: 4px;
+  height: 4px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+.logo-divider .diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--gold);
+  transform: rotate(45deg);
+}
+
+.logo-divider::before,
+.logo-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gold);
+  max-width: 40px;
+}
+
+.logo-card.compact {
+  padding: 16px 12px;
+}
+
+.logo-card.compact .logo-monogram {
+  font-size: 32px;
+}
+
+.logo-card.compact .logo-text {
+  font-size: 10px;
+}

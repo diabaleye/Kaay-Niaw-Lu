@@ -1,0 +1,11 @@
+<header class="public-header gold-border">
+  <a routerLink="/" class="header-logo">
+    <app-logo [compact]="true" />
+  </a>
+  <nav class="header-nav">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">ACCUEIL</a>
+    <a routerLink="/a-propos" routerLinkActive="active">A PROPOS</a>
+    <a routerLink="/contact" routerLinkActive="active">CONTACT</a>
+  </nav>
+  <a routerLink="/connexion" class="btn-connect">Se connecter</a>
+</header>

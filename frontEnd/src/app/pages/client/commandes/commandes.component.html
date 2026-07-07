@@ -1,0 +1,25 @@
+<div class="dashboard-layout gold-border">
+  <app-sidebar-client />
+  <main class="dashboard-main">
+    <app-dashboard-header title="MES COMMANDES" [showCart]="true" [showCommander]="true" />
+
+    @for (order of orders; track order.id) {
+      <article class="order-card">
+        <div class="order-card-content">
+          <p class="order-id">{{ order.reference }}</p>
+          <div class="order-field"><label>Nom Tailleur:</label> <span class="value">{{ order.tailor_name }}</span></div>
+          <div class="order-field"><label>Type de tissu:</label> <span class="value">{{ order.fabric_type }}</span></div>
+          <div class="order-field"><label>Deadline:</label> <span class="value deadline">{{ order.deadline }}</span></div>
+          <div class="order-actions">
+            <button class="btn-outline-white">Voir Profil</button>
+            <button class="btn-outline-white">Chat Direct</button>
+          </div>
+        </div>
+        <div class="order-side">
+          <div class="order-image">PHOTO</div>
+          <p class="order-status">Statut: <strong>{{ order.status }}</strong></p>
+        </div>
+      </article>
+    }
+  </main>
+</div>

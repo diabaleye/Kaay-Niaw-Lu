@@ -1,0 +1,63 @@
+<div class="page-container">
+  <app-public-header />
+
+  <section class="hero section-box">
+    <div class="hero-text">
+      <h1 class="hero-title">LA COUTURE SENEGALAISE, SUR MESURE, EN UN CLIC.</h1>
+      <p class="hero-subtitle">Découvrez nos tailleurs artisans. Commandez des tenues uniques.</p>
+      <a routerLink="/connexion" class="btn-gold hero-cta">
+        Trouver un artisan <span>&gt;</span>
+      </a>
+    </div>
+    <div class="hero-image">
+      <div class="hero-placeholder">
+        <span>Photo</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="how-it-works section-box">
+    <h2 class="section-title serif gold-text">Comment ça marche?</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-icon">📱</div>
+        <p>1. Rechercher un tailleur</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">📏</div>
+        <p>2. Enregistrer vos mesures</p>
+      </div>
+      <div class="step">
+        <div class="step-icon">🚚</div>
+        <p>3. Confirmation et livraison</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="artisans-section">
+    <div class="artisans-grid">
+      @for (artisan of artisans; track artisan.id) {
+        <article class="artisan-card gold-border">
+          <div class="card-header">
+            <div class="photo-placeholder">PHOTO</div>
+            <div class="card-meta">
+              <span class="card-label gold-text">CARTE ARTISAN</span>
+              <div class="stars">★★★★★</div>
+            </div>
+          </div>
+          <h3 class="workshop-name">{{ artisan.workshop_name }}</h3>
+          <ul class="artisan-details">
+            <li><strong>Prénom &amp; Nom:</strong> {{ artisan.name }}</li>
+            <li><strong>Adresse:</strong> {{ artisan.location }}</li>
+            <li><strong>Téléphone:</strong> {{ artisan.telephone }}</li>
+          </ul>
+          <button class="btn-outline-gold btn-commander-card">Commander</button>
+        </article>
+      }
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <p>© 2026 Kaaÿ ñiaw lú par NiawlouTech. Tous droits réservés.</p>
+  </footer>
+</div>

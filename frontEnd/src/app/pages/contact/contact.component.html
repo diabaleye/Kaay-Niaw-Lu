@@ -1,0 +1,29 @@
+<div class="page-container">
+  <app-public-header />
+  <section class="contact section-box">
+    <h1 class="page-title gold-text serif">Contact</h1>
+    <form class="contact-form" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Nom complet</label>
+        <input type="text" placeholder="Votre nom" [(ngModel)]="form.name" name="name" required />
+      </div>
+      <div class="form-group">
+        <label>Adresse mail</label>
+        <input type="email" placeholder="votre@email.com" [(ngModel)]="form.email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label>Message</label>
+        <textarea rows="5" placeholder="Votre message..." [(ngModel)]="form.message" name="message" required></textarea>
+      </div>
+      <button type="submit" class="btn-gold">Envoyer</button>
+    </form>
+    <div class="contact-info">
+      <p><strong>Téléphone:</strong> +221 33 000 00 00</p>
+      <p><strong>Email:</strong> contact&#64;kaayniawlu.sn</p>
+      <p><strong>Adresse:</strong> Dakar, Sénégal</p>
+    </div>
+  </section>
+  <footer class="site-footer">
+    <p>© 2026 Kaaÿ ñiaw lú par NiawlouTech. Tous droits réservés.</p>
+  </footer>
+</div>

@@ -1,0 +1,11 @@
+@import '../connexion/connexion.component.css';
+
+.register-form {
+  padding: 32px 28px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.register-form .form-section-title {
+  font-family: var(--font-serif);
+}

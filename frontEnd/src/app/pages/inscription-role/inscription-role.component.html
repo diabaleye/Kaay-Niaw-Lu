@@ -1,0 +1,22 @@
+<div class="auth-page gold-border">
+  <a routerLink="/connexion" class="back-btn">&lt;</a>
+  <div class="auth-content">
+    <div class="auth-logo">
+      <app-logo />
+    </div>
+    <div class="role-box gold-border">
+      <h2 class="role-title serif gold-text">Vous vous inscrivez en tant que?</h2>
+      <div class="role-options">
+        <label class="role-option">
+          <input type="radio" name="role" value="tailleur" [(ngModel)]="selectedRole" />
+          <span>TAILLEUR</span>
+        </label>
+        <label class="role-option">
+          <input type="radio" name="role" value="client" [(ngModel)]="selectedRole" />
+          <span>CLIENT</span>
+        </label>
+      </div>
+      <button class="btn-gold btn-continue" (click)="continue()">Continuer</button>
+    </div>
+  </div>
+</div>

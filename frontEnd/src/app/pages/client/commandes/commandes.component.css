@@ -1,0 +1,28 @@
+.order-card .order-field {
+  color: var(--white);
+}
+
+.order-card .order-field label {
+  color: var(--white);
+}
+
+.deadline {
+  font-size: 28px !important;
+}
+
+.order-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-status {
+  font-family: var(--font-serif);
+  color: var(--white);
+  font-size: 16px;
+}
+
+.order-status strong {
+  font-size: 20px;
+}

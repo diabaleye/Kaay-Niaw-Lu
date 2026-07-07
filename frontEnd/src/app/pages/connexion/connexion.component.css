@@ -1,0 +1,63 @@
+.login-form {
+  padding: 40px 36px;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 24px;
+}
+
+.role-select {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-serif);
+  cursor: pointer;
+}
+
+.radio-label input {
+  width: auto;
+  accent-color: var(--gold);
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: auto;
+  accent-color: var(--gold);
+}
+
+.btn-full {
+  width: 100%;
+  font-family: var(--font-serif);
+  font-size: 16px;
+  padding: 14px;
+}
+
+.form-footer {
+  text-align: center;
+  margin-top: 20px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+}
+
+.link-bold {
+  font-weight: 700;
+  text-decoration: underline;
+}

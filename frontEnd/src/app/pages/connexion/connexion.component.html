@@ -1,0 +1,35 @@
+<app-auth-layout backLink="/">
+  <div class="login-form gold-border">
+    <h2 class="form-title serif gold-text">Se Connecter</h2>
+
+    <div class="role-select">
+      <label class="radio-label">
+        <input type="radio" name="role" value="tailleur" [(ngModel)]="role" />
+        Je suis tailleur
+      </label>
+      <label class="radio-label">
+        <input type="radio" name="role" value="client" [(ngModel)]="role" />
+        Je suis client
+      </label>
+    </div>
+
+    <form (ngSubmit)="onLogin()">
+      <div class="form-group">
+        <input type="tel" placeholder="Numéro de téléphone" [(ngModel)]="telephone" name="telephone" required />
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Mot de passe" [(ngModel)]="password" name="password" required />
+      </div>
+      <label class="checkbox-label">
+        <input type="checkbox" [(ngModel)]="remember" name="remember" />
+        Rester connecter
+      </label>
+      <button type="submit" class="btn-gold btn-full">Connexion</button>
+    </form>
+
+    <p class="form-footer">
+      Vous n'avez pas de compte?
+      <a routerLink="/inscription" class="link-bold">Inscrivez-vous</a>
+    </p>
+  </div>
+</app-auth-layout>

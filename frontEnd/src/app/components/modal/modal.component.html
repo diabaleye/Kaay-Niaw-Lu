@@ -1,0 +1,41 @@
+@if (visible && config) {
+  <div class="modal-backdrop" (click)="onBackdropClick($event)">
+    <div class="modal-dialog gold-border" role="dialog">
+      <h2 class="modal-title">{{ config.title }}</h2>
+
+      @if (config.message) {
+        <p class="modal-message" [class.error]="config.type === 'error'" [class.success]="config.type === 'success'">
+          {{ config.message }}
+        </p>
+      }
+
+      @if (config.type === 'form' && config.fields) {
+        <div class="modal-form">
+          @for (field of config.fields; track field.name) {
+            <div class="form-group">
+              <label>{{ field.label }}</label>
+              @if (field.type === 'select') {
+                <select [(ngModel)]="formValues[field.name]">
+                  @for (opt of field.options; track opt.value) {
+                    <option [value]="opt.value">{{ opt.label }}</option>
+                  }
+                </select>
+              } @else if (field.type === 'textarea') {
+                <textarea [(ngModel)]="formValues[field.name]" rows="4"></textarea>
+              } @else {
+                <input [type]="field.type || 'text'" [(ngModel)]="formValues[field.name]" />
+              }
+            </div>
+          }
+        </div>
+      }
+
+      <div class="modal-actions">
+        @if (config.type === 'confirm' || config.type === 'form') {
+          <button class="btn-outline-gold" (click)="onCancel()">{{ config.cancelLabel || 'Annuler' }}</button>
+        }
+        <button class="btn-gold" (click)="onConfirm()">{{ config.confirmLabel || 'OK' }}</button>
+      </div>
+    </div>
+  </div>
+}

@@ -1,0 +1,14 @@
+<header class="dash-header">
+  <h1 class="dash-title">{{ title }}</h1>
+  <div class="dash-actions">
+    @if (showCommander) {
+      <a routerLink="/client/commandes" class="btn-outline-gold btn-commander">+ Commander</a>
+    }
+    <span class="icon-gold">🔔</span>
+    @if (showCart) {
+      <span class="icon-gold">🛒</span>
+    }
+    <span class="icon-gold user-icon">👤</span>
+  </div>
+</header>
+<div class="dash-divider"></div>

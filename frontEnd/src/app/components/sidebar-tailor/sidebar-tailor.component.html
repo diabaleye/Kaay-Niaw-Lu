@@ -1,0 +1,16 @@
+<aside class="sidebar gold-border">
+  <div class="sidebar-logo">
+    <app-logo [compact]="true" />
+  </div>
+  <nav class="sidebar-nav">
+    @for (item of menuItems; track item.path) {
+      <a [routerLink]="item.path" routerLinkActive="active" class="nav-item">
+        <span class="nav-icon">{{ item.icon }}</span>
+        {{ item.label }}
+      </a>
+    }
+  </nav>
+  <a routerLink="/connexion" class="logout-link">
+    <span>↪</span> Se déconnecter
+  </a>
+</aside>

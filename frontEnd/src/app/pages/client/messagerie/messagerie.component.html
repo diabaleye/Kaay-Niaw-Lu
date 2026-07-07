@@ -1,0 +1,49 @@
+<div class="dashboard-layout gold-border messaging-layout">
+  <app-sidebar-client />
+  <main class="dashboard-main messaging-main">
+    <app-dashboard-header title="MA MESSAGERIE" [showCart]="true" [showCommander]="true" />
+
+    <div class="messaging-grid">
+      <aside class="conversations gold-border">
+        <h3>Liste des discussions</h3>
+        <div class="search-bar">
+          <span>🔍</span>
+          <input type="text" placeholder="Rechercher une discussion" />
+        </div>
+        @for (conv of conversations; track conv.id) {
+          <div class="conv-item gold-border" [class.active]="conv.id === activeConv.id" (click)="activeConv = conv">
+            <div class="conv-photo">PHOTO</div>
+            <div class="conv-info">
+              <strong>{{ conv.name }}</strong>
+              <p>{{ conv.lastMessage }}</p>
+            </div>
+            <span class="unread-dot"></span>
+          </div>
+        }
+      </aside>
+
+      <section class="chat-window gold-border">
+        <div class="chat-header">
+          <div class="conv-photo">PHOTO</div>
+          <div>
+            <strong>{{ activeConv.name }}</strong>
+            <span class="online">En ligne</span>
+            <p class="chat-subtitle">Discussion autour de la commande #1024 - Boubou Bazin</p>
+          </div>
+        </div>
+        <div class="messages">
+          @for (msg of messages; track msg.id) {
+            <div class="message" [class.outgoing]="msg.outgoing" [class.incoming]="!msg.outgoing">
+              {{ msg.text }}
+            </div>
+          }
+        </div>
+        <div class="chat-input gold-border">
+          <button class="attach-btn">+</button>
+          <input type="text" placeholder="Entrez un message" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" />
+          <button class="mic-btn">🎤</button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

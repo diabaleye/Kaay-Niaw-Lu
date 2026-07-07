@@ -1,0 +1,59 @@
+.dash-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 0;
+  gap: 16px;
+}
+
+.dash-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.dash-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon-gold {
+  font-size: 22px;
+  filter: sepia(1) saturate(3) hue-rotate(10deg);
+  cursor: pointer;
+}
+
+.user-icon {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.btn-commander {
+  font-size: 13px;
+  padding: 8px 20px;
+}
+
+.dash-divider {
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 24px;
+}
+
+@media (max-width: 600px) {
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dash-title {
+    font-size: 22px;
+  }
+}

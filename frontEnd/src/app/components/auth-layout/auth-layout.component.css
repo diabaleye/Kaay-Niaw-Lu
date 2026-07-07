@@ -1,0 +1,41 @@
+.auth-page {
+  min-height: 100vh;
+  margin: 16px;
+  padding: 24px;
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  font-size: 28px;
+  color: var(--gold);
+  font-weight: 700;
+  z-index: 10;
+}
+
+.auth-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+  min-height: calc(100vh - 80px);
+  padding: 40px 20px;
+}
+
+.auth-logo {
+  flex-shrink: 0;
+}
+
+.auth-form-area {
+  flex: 1;
+  max-width: 480px;
+}
+
+@media (max-width: 900px) {
+  .auth-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+}

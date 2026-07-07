@@ -1,0 +1,39 @@
+@import '../../components/auth-layout/auth-layout.component.css';
+
+.role-box {
+  padding: 40px;
+  text-align: center;
+  max-width: 420px;
+}
+
+.role-title {
+  font-size: 22px;
+  margin-bottom: 32px;
+}
+
+.role-options {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-bottom: 32px;
+}
+
+.role-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.role-option input {
+  width: auto;
+  accent-color: var(--gold);
+}
+
+.btn-continue {
+  padding: 12px 40px;
+}

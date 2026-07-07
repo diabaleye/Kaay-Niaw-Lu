@@ -1,0 +1,31 @@
+<div class="dashboard-layout gold-border">
+  <app-sidebar-client />
+  <main class="dashboard-main">
+    <app-dashboard-header title="CARNET DE MESURES" [showCart]="true" [showCommander]="true" />
+
+    <div class="mesures-header">
+      <div>
+        <h2 class="mesures-title serif gold-text">Mesures de {{ userName }}</h2>
+        <p class="mesures-update">Dernière mise à jour: Il y a 2 mois</p>
+      </div>
+      <button class="btn-black" (click)="save()">Enregistrer les modifications</button>
+    </div>
+
+    @for (section of sections; track section.title) {
+      <section class="mesures-section gold-border">
+        <h3 class="section-heading">{{ section.title }}</h3>
+        @for (m of section.items; track m.key) {
+          <div class="mesure-row">
+            <span class="mesure-label gold-border">{{ m.label }}</span>
+            <span class="mesure-arrow">→</span>
+            <div class="mesure-input gold-border">
+              <input type="number" [(ngModel)]="measurements[m.key]" />
+              <span class="unit">CM</span>
+              <span class="stepper">⇅</span>
+            </div>
+          </div>
+        }
+      </section>
+    }
+  </main>
+</div>

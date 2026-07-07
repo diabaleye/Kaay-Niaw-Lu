@@ -1,0 +1,25 @@
+<div class="dashboard-layout gold-border">
+  <app-sidebar-client />
+  <main class="dashboard-main">
+    <app-dashboard-header title="TABLEAU DE BORD" [showCart]="true" [showCommander]="true" />
+    <p class="welcome-text">BIENVENUE <span class="name">{{ userName }} !</span></p>
+
+    <section class="section-box">
+      <h2 class="section-heading">Indicateurs Clés de Performance</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <h3>Commandes en Cours</h3>
+          <div class="kpi-value">{{ kpis.enCours }}</div>
+        </div>
+        <div class="kpi-card">
+          <h3>Livrées cette Semaine</h3>
+          <div class="kpi-value">{{ kpis.livrees }}</div>
+        </div>
+        <div class="kpi-card">
+          <h3>Notifications</h3>
+          <div class="kpi-value">{{ kpis.notifications }}</div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
