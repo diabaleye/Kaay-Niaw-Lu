@@ -1,0 +1,46 @@
+<div class="dashboard-layout gold-border">
+  <app-sidebar-tailor />
+  <main class="dashboard-main">
+    <app-dashboard-header title="MON ATELIER VIRTUEL" />
+
+    <div class="filter-tabs">
+      @for (tab of tabs; track tab) {
+        <button class="filter-tab" [class.active]="activeTab === tab" (click)="activeTab = tab">{{ tab }}</button>
+      }
+    </div>
+
+    <h2 class="section-heading">Mes modèles</h2>
+
+    <table class="modeles-table gold-border">
+      <thead>
+        <tr>
+          <th>PHOTO</th>
+          <th>NOM MODELE / TISSUS</th>
+          <th>PRIX</th>
+          <th>ACTIONS</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (modele of modeles; track modele.id) {
+          <tr>
+            <td><div class="table-photo">PHOTO</div></td>
+            <td class="modele-info">
+              <span>Modèle: {{ modele.name }}</span>
+              <span>Tissu: {{ modele.fabric }}</span>
+            </td>
+            <td class="modele-price">{{ modele.price | number }} </td>
+            <td class="modele-actions">
+              <button title="Modifier">✏️</button>
+              <button title="Masquer">👁</button>
+              <button title="Supprimer">🗑</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+
+    <div class="add-btn-wrap">
+      <button class="btn-gold">+ Ajouter modèle</button>
+    </div>
+  </main>
+</div>

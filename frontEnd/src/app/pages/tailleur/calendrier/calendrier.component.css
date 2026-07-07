@@ -1,0 +1,39 @@
+.calendar-placeholder {
+  min-height: 400px;
+  text-align: center;
+}
+
+.calendar-placeholder > p {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.calendar-day {
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  padding: 12px 8px;
+  min-height: 70px;
+  font-size: 13px;
+}
+
+.calendar-day.has-delivery {
+  background: rgba(197, 160, 72, 0.15);
+}
+
+.day-num {
+  font-weight: 700;
+  display: block;
+}
+
+.delivery-badge {
+  font-size: 10px;
+  color: var(--gold-dark);
+  display: block;
+  margin-top: 4px;
+}
