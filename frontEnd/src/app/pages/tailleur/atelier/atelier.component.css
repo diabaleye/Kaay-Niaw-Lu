@@ -1,0 +1,60 @@
+.modeles-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 24px;
+}
+
+.modeles-table th,
+.modeles-table td {
+  border: 1px solid var(--gold);
+  padding: 16px;
+  text-align: left;
+}
+
+.modeles-table th {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.table-photo {
+  width: 60px;
+  height: 60px;
+  background: var(--gray-placeholder);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+}
+
+.modele-info {
+  font-family: var(--font-serif);
+  color: var(--gold);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.modele-price {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--gold);
+  font-family: var(--font-serif);
+}
+
+.modele-actions button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 8px;
+}
+
+.add-btn-wrap {
+  text-align: right;
+}
+
+.add-btn-wrap .btn-gold {
+  padding: 14px 28px;
+}

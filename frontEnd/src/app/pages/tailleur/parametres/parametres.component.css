@@ -1,0 +1,51 @@
+.settings-section {
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.settings-title {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.settings-actions .btn-gold {
+  font-family: var(--font-serif);
+  color: var(--white);
+  padding: 16px;
+}
+
+.settings-actions.outline .btn-outline-gold {
+  font-family: var(--font-serif);
+  padding: 16px;
+}
+
+.settings-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.settings-row label {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  margin-bottom: 8px;
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .settings-actions,
+  .settings-row {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="dashboard-layout gold-border">
+  <app-sidebar-tailor />
+  <main class="dashboard-main">
+    <app-dashboard-header title="CALENDRIER DES LIVRAISONS" />
+    <div class="calendar-placeholder section-box">
+      <p class="serif gold-text">Calendrier des livraisons à venir</p>
+      <div class="calendar-grid">
+        @for (day of calendarDays; track day.date) {
+          <div class="calendar-day" [class.has-delivery]="day.deliveries > 0">
+            <span class="day-num">{{ day.date }}</span>
+            @if (day.deliveries > 0) {
+              <span class="delivery-badge">{{ day.deliveries }} livraison(s)</span>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </main>
+</div>
