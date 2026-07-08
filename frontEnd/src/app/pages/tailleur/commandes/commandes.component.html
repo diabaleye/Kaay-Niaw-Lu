@@ -1,0 +1,28 @@
+<div class="dashboard-layout gold-border">
+  <app-sidebar-tailor />
+  <main class="dashboard-main">
+    <app-dashboard-header title="COMMANDES RECUES" />
+
+    <div class="filter-tabs">
+      @for (tab of tabs; track tab) {
+        <button class="filter-tab" [class.active]="activeTab === tab" (click)="activeTab = tab">{{ tab }}</button>
+      }
+    </div>
+
+    @for (order of orders; track order.id) {
+      <article class="order-card">
+        <div class="order-card-content">
+          <p class="order-id">{{ order.reference }}</p>
+          <div class="order-field"><label>Nom Client:</label> <span class="value">{{ order.client_name }}</span></div>
+          <div class="order-field"><label>Type de tissu:</label> <span class="value">{{ order.fabric_type }}</span></div>
+          <div class="order-field"><label>Progression Commande:</label> <span class="value">{{ order.progress }}%</span></div>
+          <div class="order-actions">
+            <button class="btn-outline-white">Voir Mesures</button>
+            <button class="btn-outline-white">Chat Direct</button>
+          </div>
+        </div>
+        <div class="order-image">PHOTO</div>
+      </article>
+    }
+  </main>
+</div>

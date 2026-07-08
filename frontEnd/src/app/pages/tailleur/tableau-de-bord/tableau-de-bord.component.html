@@ -1,0 +1,47 @@
+<div class="dashboard-layout gold-border">
+  <app-sidebar-tailor />
+  <main class="dashboard-main">
+    <app-dashboard-header title="TABLEAU DE BORD" />
+    <p class="welcome-text">BIENVENUE <span class="name">{{ userName }} !</span></p>
+
+    <section class="section-box">
+      <h2 class="section-heading">Indicateurs Clés de Performance</h2>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <h3>Commandes en Cours</h3>
+          <div class="kpi-value">{{ kpis.enCours }}</div>
+        </div>
+        <div class="kpi-card">
+          <h3>Livrées cette Semaine</h3>
+          <div class="kpi-value">{{ kpis.livrees }}</div>
+        </div>
+        <div class="kpi-card">
+          <h3>Chiffre d'affaires</h3>
+          <div class="kpi-value">{{ kpis.ca }}</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="dashboard-grid">
+      <section class="section-box">
+        <h2 class="section-heading">Fil des Tâches</h2>
+        <p class="subtitle serif">Confections prioritaires</p>
+        <div class="task-card gold-border">
+          <div class="order-field"><label>Nom Client:</label> <span class="value gold-text">Fatou SARR</span></div>
+          <div class="order-field"><label>Type de tissu:</label> <span class="value gold-text">Bazin Riche</span></div>
+          <div class="order-field"><label>Progression Commande:</label> <span class="value gold-text">85%</span></div>
+          <button class="btn-outline-gold btn-center">Afficher Commande</button>
+        </div>
+      </section>
+
+      <section class="section-box capacity-section">
+        <h2 class="section-heading">Capacité Dynamique</h2>
+        <div class="pie-chart">
+          <div class="pie-inner">{{ capacity }}%</div>
+        </div>
+        <p class="capacity-value">{{ capacity }}%</p>
+        <p class="capacity-alert">⚠ Seuil de commandes presque atteint</p>
+      </section>
+    </div>
+  </main>
+</div>
